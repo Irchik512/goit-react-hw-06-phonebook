@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Contacts = styled.li`
+export const Contact = styled.li`
   box-sizing: border-box;
   width: 360px;
   text-align: start;

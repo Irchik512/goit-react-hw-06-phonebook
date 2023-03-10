@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
 import ContactsListItem from 'components/ContactList/ContactsListItem';
 import { ContactsList } from 'components/ContactList/ContactsList.styled';
+import { useSelector } from 'react-redux';
 
-export default function ContactList({ contacts, onClick }) {
+export default function ContactList() {
+  const contactsList = useSelector(state => state.contacts);
+
   return (
     <ContactsList>
-      {contacts.map(({ name, number, id }) => (
+      {contactsList.map(contact => (
         <ContactsListItem
-          key={id}
-          name={name}
-          number={number}
-          onClick={() => onClick(id)}
+          key={contact.id}
+          name={contact.name}
+          number={contact.number}
+          id={contact.id}
         />
       ))}
     </ContactsList>
@@ -18,10 +21,9 @@ export default function ContactList({ contacts, onClick }) {
 }
 
 ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
+  contactsList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     })
   ),
-  onClick: PropTypes.func,
 };
