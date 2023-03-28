@@ -3,28 +3,15 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import Notification from './Notification/Notification';
-import { useSelector, useDispatch } from 'react-redux';
-import { apdateFilter } from 'redux/filterSlice';
-
+import { useSelector } from 'react-redux';
+import { getContactValue } from 'redux/selectors';
 export default function App() {
-  // filterValueSlice.initialState = useLocalStorage('contacts', []);
-
-  const inputChangeHandle = evt => apdateFilter(evt.currentTarget.value);
-
-  // const filteredContacts = () => {
-  //   const normalizedFilter = filter.toLowerCase();
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
-
-  const contactsList = useSelector(state => state.contacts.item);
-  const filterValue = useSelector(state => state.contacts.filter);
+  const contactsList = useSelector(getContactValue);
   return (
     <>
       <Section>
         <h2>Phonebook</h2>
-        <ContactForm /*onSubmit={formSubmitHandler}*/ />
+        <ContactForm />
       </Section>
       <Section>
         <h2>Contacts</h2>
@@ -32,7 +19,7 @@ export default function App() {
           <Notification message="There is no contact yet." />
         ) : (
           <>
-            <Filter value={filterValue} onChange={inputChangeHandle} />
+            <Filter />
             <ContactList />
           </>
         )}

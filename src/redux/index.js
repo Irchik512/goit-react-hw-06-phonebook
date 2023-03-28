@@ -1,3 +1,4 @@
 export * from './store';
-export * from './itemsSlice';
+export * from './contactsSlice';
 export * from './filterSlice';
+export * from './selectors';
