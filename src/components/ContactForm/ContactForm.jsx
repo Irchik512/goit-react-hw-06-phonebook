@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContactValue } from 'redux/selectors';
-import { Form, Label, Input, Button } from './ContactForm.styled';
-
 import { addContact } from 'redux/contactsSlice';
 import { nanoid } from 'nanoid';
+import { Form, Label, Input, Button } from './ContactForm.styled';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -43,7 +42,6 @@ export default function ContactForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <Label>
-        {' '}
         Name
         <Input
           type="text"

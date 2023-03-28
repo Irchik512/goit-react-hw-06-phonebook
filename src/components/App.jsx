@@ -5,6 +5,7 @@ import Filter from './Filter/Filter';
 import Notification from './Notification/Notification';
 import { useSelector } from 'react-redux';
 import { getContactValue } from 'redux/selectors';
+
 export default function App() {
   const contactsList = useSelector(getContactValue);
   return (
